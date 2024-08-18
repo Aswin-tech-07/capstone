@@ -15,7 +15,7 @@ pipeline {
     }
     stage('Build') {
       steps {
-        sh 'docker build -t aswin3498/capstone_development:latest .'
+        sh 'docker build -t aswin3498/capstone_production:latest .'
 	echo 'docker build completed'
       }
     }
@@ -27,7 +27,7 @@ pipeline {
     }
     stage('Push') {
       steps {
-        sh 'docker push aswin3498/capstone_development:latest'
+        sh 'docker push aswin3498/capstone_production:latest'
 	echo 'docker image published'
       }
     }

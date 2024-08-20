@@ -4,13 +4,12 @@ pipeline {
     buildDiscarder(logRotator(numToKeepStr: '5')) // Keeps only the last 5 builds
   }
   environment {
-    DOCKERHUB_CREDENTIALS = credentials('idforcapstone') // Docker Hub credentials
-    DOCKER_HOST = 'unix:///var/run/docker.sock' // Explicitly set Docker to use the local Unix socket
-  }
+    DOCKERHUB_CREDENTIALS = credentials('docker') // Docker Hub credentials
+ }
   stages {
     stage("Git Checkout"){           
       steps {                
-        git branch: 'dev', credentialsId: 'githubkey', url: 'https://github.com/Aswin-tech-07/capstone.git'
+        git branch: 'dev', credentialsId: 'github', url: 'https://github.com/Aswin-tech-07/capstone.git'
         echo 'Git Checkout Completed'            
       }        
     }

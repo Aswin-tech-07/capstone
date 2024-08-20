@@ -4,8 +4,8 @@ pipeline {
     buildDiscarder(logRotator(numToKeepStr: '5')) // Keeps only the last 5 builds
   }
   environment {
-    DOCKERHUB_CREDENTIALS = credentials('docker') // Docker Hub credentials
- }
+    DOCKERHUB_CREDENTIALS = credentials('dockerkey') // Docker Hub credentials
+  }
   stages {
     stage("Git Checkout"){           
       steps {                
@@ -34,8 +34,11 @@ pipeline {
   }
   post {
     always {
-      sh 'docker logout'
-      echo 'Docker logged out'
+      // Ensure the sh commands are executed within a node or agent context
+      script {
+        sh 'docker logout'
+        echo 'Docker logged out'
+      }
     }
   }
 }

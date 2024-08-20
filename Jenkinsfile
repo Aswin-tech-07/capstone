@@ -5,6 +5,7 @@ pipeline {
   }
   environment {
     DOCKERHUB_CREDENTIALS = credentials('idforcapstone') // Docker Hub credentials
+    DOCKER_HOST = 'unix:///var/run/docker.sock' // Explicitly set Docker to use the local Unix socket
   }
   stages {
     stage("Git Checkout"){           

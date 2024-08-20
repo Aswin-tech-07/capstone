@@ -9,7 +9,7 @@ pipeline {
   stages {
     stage("Git Checkout"){           
       steps{                
-	git credentialsId: 'github', url: 'https://github.com/Aswin-tech-07/capstone.git'                 
+	git credentialsId: 'githubkey', url: 'https://github.com/Aswin-tech-07/capstone.git'                 
 	echo 'Git Checkout Completed'            
       }        
     }
